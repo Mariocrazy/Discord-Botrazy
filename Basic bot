@@ -1,0 +1,38 @@
+from discord.ext import commands
+import discord
+
+# Set up the bot with a command prefix
+intents = discord.Intents.default()
+intents.messages = True #  For message-related events
+intents.message_content = True  # For message content
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+
+@bot.event
+async def on_ready():
+    print(f'[your bots name here] is ready! Logged in as {bot.user}')
+
+@bot.command()
+async def yay(ctx):
+    await ctx.send('Yay! 🎉')
+
+@bot.command()
+async def crazy(ctx):
+    await ctx.send('[your bots name here] is in the house! 🤪')
+
+@bot.command()
+async def wassup(ctx):
+    await ctx.send('Not much! Thanks for asking!')
+
+@bot.command()
+async def repeat(ctx, *, message: str):
+    await ctx.send(message)    
+
+
+
+
+
+
+
+# Run the bot with the token
+bot.run('your token here')
